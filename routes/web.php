@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminEmployeeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminServiceController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FormController;
@@ -72,5 +73,11 @@ Route::group(['middleware' => 'employee_auth'], function () {
 
     Route::post('/employee/student-block', [AdminEmployeeController::class, 'StudentBlock'])->name('student.block');
     Route::post('/employee/student-activate', [AdminEmployeeController::class, 'StudentActivate'])->name('employee.activate');
+
+    Route::get('/employee/students/attendance', [AttendanceController::class, 'Studentattendance'])->name('student.attendance');
+    Route::post('/employee/students/attendance-save', [AttendanceController::class, 'StudentattendanceSave'])->name('student.attendance.save');
+    Route::get('/employee/students/history', [AttendanceController::class, 'StudentHistory'])->name('student.history');
+    Route::post('/get-history', [AttendanceController::class, 'Gethistory'])->name('gethistory');
+
 
 });
